@@ -47,16 +47,21 @@ try:
     if n <= 0:
         print('Error. Enter a positive integer.')
     else:
-        start = time.time()
+        start = time.time() #1st attempt
         seq_cached = fibonacci_cached(n)
         time_cached = time.time() - start
         
+        start = time.time() #2nd attempt
+        seq_cached = fibonacci_cached(n)
+        time_cached = time.time() - start
+
         start = time.time()
         seq_regular = fibonacci_regular(n)
         time_regular = time.time() - start
         
         print(f"Sequence: {seq_cached}")
-        print(f"With cache: {time_cached:.6f} seconds")
+        print(f"With cache (1st attempt)): {time_cached:.6f} seconds")
+        print(f"With cache (2nd attempt): {time_cached:.6f} seconds")
         print(f"Without cache: {time_regular:.6f} seconds")
         
 except ValueError:
