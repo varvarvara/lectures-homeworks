@@ -54,12 +54,12 @@ class Beetle:
     def attack(self, other: Self) -> None:
         damage = 10
         other.health_points -= damage
-        console.print(f"[red]{self.name}[/red] attacks [blue]{other.name}[/blue] for {damage} damage")
+        console.print(f"[red3]{self.name}[/red3] attacks [dodger_blue3]{other.name}[/dodger_blue3] for {damage} damage")
         if other.health_points <= 0:
             other.health_points = 0
-            console.print(f"[blue]{other.name}[/blue] died!")
+            console.print(f"[dark_red]{other.name} died![/dark_red]")
             self.health_points = min(self.max_health_points, self.health_points + 10)
-            console.print(f"[red]{self.name}[/red] rewarded with {10} health points")
+            console.print(f"[gold1]{self.name}[/gold1] rewarded with [gold3] {10} [/gold3] health points")
             
 class BeetlesArmy:
     beetles_list: list[Beetle]
@@ -88,7 +88,7 @@ class BeetlesArmy:
 
     def __add__(self, other: Self) -> Self:
         if self.beetles_name != other.beetles_name:
-            raise ValueError("Cannot make two different-named beetles friends")
+            raise ValueError("[turquoise4]Cannot make two different-named beetles friends[/turquoise4]")
         new_beetles_list: list[Beetle] = self.beetles_list + other.beetles_list
         new_army = self.__class__(
             beetles_army_size=1,
@@ -126,16 +126,16 @@ class BeetlesArmy:
     def battle(self, other: Self):
         round_num = 1
         while self.alive_beetles() and other.alive_beetles():
-            console.print(f"\n--- Round {round_num} ---")
+            console.print(f"\n [orange3]--- ROUND {round_num} ---[/orange3]")
             self.attack(other)
             round_num += 1
 
         if self.total_health() > other.total_health():
-            console.print(f"\n[bold green]{self.beetles_name.value} wins![/bold green]")
+            console.print(f"\n[chartreuse3]{self.beetles_name.value} wins![/chartreuse3]")
         elif self.total_health() < other.total_health():
-            console.print(f"\n[bold red]{other.beetles_name.value} wins![/bold red]")
+            console.print(f"\n[chartreuse3]{other.beetles_name.value} wins![/chartreuse3]")
         else:
-            console.print("\n[bold yellow]It's a tie![/bold yellow]")
+            console.print("\n[magenta]It's a tie![/magenta]")
 
     def total_health(self):
         return sum(beetles.health_points for beetles in self.beetles_list)
@@ -151,11 +151,11 @@ class BeetlesArmy:
         return self.total_health() == other.total_health()
 
 if __name__ == "__main__":
-    warrior_1 = Names[input("Enter first army name (JOHN/PAUL/GEORGE/RINGO): ").upper()]
-    num_1 = int(input("Enter first army size: "))
+    warrior_1 = Names[input(f"Enter first army name (JOHN/PAUL/GEORGE/RINGO):").upper()]
+    num_1 = int(input(f"Enter first army size: "))
 
-    warrior_2 = Names[input("Enter second army name (JOHN/PAUL/GEORGE/RINGO): ").upper()]
-    num_2 = int(input("Enter second army size: "))
+    warrior_2 = Names[input(f"Enter second army name (JOHN/PAUL/GEORGE/RINGO):").upper()]
+    num_2 = int(input(f"Enter second army size: "))
 
     if warrior_1 == warrior_2:
         print("Both armies have the same name! Try again.")
@@ -164,17 +164,17 @@ if __name__ == "__main__":
     army1 = BeetlesArmy(beetles_name=warrior_1, beetles_army_size=num_1)
     army2 = BeetlesArmy(beetles_name=warrior_2, beetles_army_size=num_2)
 
-    print('ARMY 1')
+    print('[red1]ARMY 1[/red1]')
 
     army1.print_army_listing()
     print('')
     
-    print('ARMY 2')
+    print('[slate_blue1]ARMY 2[/slate_blue1]')
     army1.print_army_listing()
     print('')
     
     army1.battle(army2)
-    
+
     
     # m1 = Beetle(health_points=90, name=Names.JOHN)
     # m2 = Beetle(health_points=90, name=Names.PAUL)
