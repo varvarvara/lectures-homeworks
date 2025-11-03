@@ -1,10 +1,15 @@
 [project]
+<<<<<<< HEAD
 name = "lectures"
+=======
+name = "lecture-llm-api"
+>>>>>>> 2585073 (Добавлен проект lecture_llm_api)
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+<<<<<<< HEAD
     "ipykernel>=6.30.1",
     "jupyterlab>=4.4.9",
     "notebook>=7.4.7",
@@ -29,4 +34,10 @@ members = [
     "lecture_spec",
     "lecture_10",
     "lecture_A",
+=======
+    "numpy>=2.3.3",
+    "openai>=2.6.1",
+    "pydantic>=2.12.3",
+    "python-dotenv>=1.1.1",
+>>>>>>> 2585073 (Добавлен проект lecture_llm_api)
 ]
